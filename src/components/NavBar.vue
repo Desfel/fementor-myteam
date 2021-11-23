@@ -1,51 +1,59 @@
 <template>
   <header class="navbar" :class="{ offline: !networkOnLine }">
-    <router-link to="/home">
-      <img alt="logo-bento" class="logo" src="@/assets/img/bento-starter.svg" />
-      <span class="site-name title-desktop">{{ appTitle }}</span>
-      <span class="site-name title-mobile">{{ appShortTitle }}</span>
+    <router-link to="/home" class="logo">
+      <img alt="logo-myteam" src="@/assets/img/logo.svg" />
     </router-link>
-    <div class="links">
+
+    <div class="links desktop-links">
       <nav class="nav-links">
         <div class="nav-item">
-          <router-link to="/products">Products</router-link>
+          <router-link to="/home">home</router-link>
+          <router-link to="/about">about</router-link>
         </div>
-        <div v-if="!isUserLoggedIn && networkOnLine" class="nav-item">
-          <router-link to="/login">Login</router-link>
-        </div>
-        <div
-          v-if="isUserLoggedIn && networkOnLine"
-          class="nav-item logout-item"
-          @click="logout"
-        >
-          <a>Logout</a>
-        </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
-      </nav>
 
-      <img
-        v-if="isUserLoggedIn && networkOnLine"
-        class="user-picture can-hide"
-        :src="user.photoURL"
-        alt="Avatar"
-      />
+        <router-link class="site-btn outlined-light" to="/contact">contact us</router-link>
+      </nav>
+    </div>
+
+    <a href="#" class="burger-menu" @click="openMenu">
+      <img src="@/assets/img/icon-hamburger.svg" />
+    </a>
+
+    <div class="mobile-menu-wrapper" :class="{'is-opened': menuIsActive}">
+      <div class="mobile-menu">
+        <a href="#" class="close-btn" @click="openMenu">
+          <img src="@/assets/img/icon-close.svg" />
+        </a>
+
+        <nav class="nav-links">
+          <div class="nav-item">
+            <router-link to="/home" @click.native="openMenu">home</router-link>
+            <router-link to="/about" @click.native="openMenu">about</router-link>
+          </div>
+
+          <router-link class="site-btn outlined-light" to="/contact" @click.native="openMenu">contact us</router-link>
+        </nav>
+      </div>
     </div>
   </header>
 </template>
 
 <script>
-import firebase from 'firebase/app'
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
+  data() {
+    return {
+      menuIsActive: false
+    }
+  },
   computed: {
-    ...mapGetters('authentication', ['isUserLoggedIn']),
-    ...mapState('authentication', ['user']),
     ...mapState('app', ['networkOnLine', 'appTitle', 'appShortTitle'])
   },
   methods: {
-    async logout() {
-      await firebase.auth().signOut()
+    openMenu(e) {
+      e.preventDefault()
+      this.menuIsActive = !this.menuIsActive
     }
   }
 }
@@ -55,133 +63,146 @@ export default {
 @import '@/theme/variables.scss';
 
 .navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-  right: 0;
-  height: $navbar-height;
-  background-color: $navbar-color;
-  box-sizing: border-box;
-  border-bottom: 1px solid #eaecef;
-  padding: 0.7rem 1.5rem;
-  line-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  padding: $generalDesktopPadding;
+  width: 100%;
 
-  a {
-    display: flex;
-    align-items: center;
+  @media (max-width: 1024px) {
+    padding: 0 40px;
   }
 
-  .title-desktop {
-    display: inline;
-  }
-
-  .title-mobile {
-    display: none;
-  }
-
-  @media (max-width: 500px) {
-    padding: 0.7rem 0.7rem;
-
-    .can-hide {
-      display: none;
-    }
-
-    .title-desktop {
-      display: none;
-    }
-
-    .title-mobile {
-      display: block;
-    }
-  }
-
-  .site-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    position: relative;
+  @media (max-width: 767px) {
+    padding: $generalMobilePadding;
   }
 
   .logo {
-    height: 24px;
-    padding-right: 8px;
+    margin-right: 80px;
   }
 
   .links {
-    padding-left: 1.5rem;
-    box-sizing: border-box;
-    white-space: nowrap;
-    font-size: 0.9rem;
-    position: absolute;
-    right: 1.5rem;
-    top: 0.7rem;
-    display: flex;
+    width: 100%;
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .nav-item {
-        position: relative;
-        display: inline-block;
-        margin-left: 1.5rem;
-        line-height: 2.2rem;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        a {
-          font-weight: 500;
-          font-size: 0.9rem;
-          text-decoration: none;
-          color: $navbar-link-color;
-          border-color: #2c3e50;
-          line-height: 1.4rem;
-          display: inline-block;
-          cursor: pointer;
-        }
-
-        @mixin activatedLink() {
-          margin-bottom: -2px;
-          border-bottom: 2px solid $vue-color;
-        }
-
-        .router-link-active {
-          @include activatedLink;
-        }
-
-        @media (hover) {
-          :hover {
-            @include activatedLink;
-          }
-        }
+    &.desktop-links {
+      @media (max-width: 767px) {
+        display: none;
       }
     }
   }
 
-  &.offline {
-    background: $navbar-offline-color;
-    .links .nav-links .nav-item a,
-    .site-name {
-      color: white;
+  .nav-links {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .burger-menu {
+    display: none;
+    text-align: right;
+    margin-left: auto;
+
+    @media (max-width: 767px) {
+      display: block;
     }
   }
 
-  .user-picture {
-    max-height: 32px;
-    margin-left: 1.5rem;
-    border-radius: 50%;
+  .nav-item {
+    a {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 28px;
+      color: $white;
+      transition: color .3s ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      &:hover {
+        color: $primaryColor2;
+      }
+    }
   }
 
-  .offline-label {
-    padding: 0px 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-    color: white;
-    margin-left: 1.5rem;
+  .site-btn {
+    margin-left: auto;
+  }
+
+  .mobile-menu-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    height: 100vh;
+    width: 100%;
+
+    background: rgba(0, 0, 0, 0);
+    transition: all .3s ease-in-out;
+    z-index: -1;
+    overflow: hidden;
+
+    &.is-opened {
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+
+      .mobile-menu {
+        right: 0;
+      }
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 0;
+      right: -255px;
+      padding: 56px 25px 0 48px;
+
+      display: flex;
+      flex-direction: column;
+      width: 255px;
+      height: 100vh;
+
+      background: $secondaryColor2;
+      transition: right .3s ease-in-out;
+      z-index: 11;
+
+      overflow: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: -100px;
+
+        display: block;
+        width: 200px;
+        height: 200px;
+        background: url('../assets/img/bg-pattern-about-1-mobile-nav-1.svg') top left/contain no-repeat;
+      }
+
+      .nav-links {
+        margin-top: 39px;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .nav-item {
+          display: flex;
+          flex-direction: column;
+
+          a {
+            margin-bottom: 34px;
+          }
+        }
+
+        .site-btn {
+          margin: 0;
+        }
+      }
+    }
+
+    .close-btn {
+      margin-left: auto;
+    }
   }
 }
 </style>

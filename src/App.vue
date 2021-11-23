@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
     <div class="main-wrapper">
+      <nav-bar></nav-bar>
       <router-view />
+      <footer-component></footer-component>
     </div>
 
     <new-content-available-toastr
@@ -21,12 +22,13 @@
 </template>
 <script>
 import NavBar from '@/components/NavBar'
+import FooterComponent from '@/components/Footer'
 import NewContentAvailableToastr from '@/components/NewContentAvailableToastr'
 import AppleAddToHomeScreenModal from '@/components/AppleAddToHomeScreenModal'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { NavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal },
+  components: { NavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal, FooterComponent },
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
     ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp'])
@@ -39,12 +41,138 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/theme/variables.scss';
+
 body {
   margin: 0;
 
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
   a {
-    font-weight: 500;
+    font-family: $textFont;
+    margin: 0;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 100px;
+
+    @media (max-width: 1200px) {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 64px;
+      line-height: 56px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 48px;
+
+    @media (max-width: 1024px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  p {
+    font-weight: 600;
+
+    &.body-1 {
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    &.body-2 {
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+
+  a {
     text-decoration: none;
+  }
+
+  .site-btn {
+    padding: 9px 33px 11px 32px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    border-radius: 24px;
+    border: 2px solid $white;
+    transition: all 0.3s ease-in-out;
+
+    &.outlined-light {
+      background: transparent;
+      color: $white;
+
+      &:hover {
+        background: $white;
+        color: $secondaryColor5;
+      }
+    }
+
+    &.outlined-dark {
+      background: transparent;
+      border-color: $secondaryColor5;
+      color: $secondaryColor5;
+
+      &:hover {
+        background: $secondaryColor5;
+        color: $white;
+      }
+    }
+
+    &.filled {
+      background: $white;
+      color: $secondaryColor5;
+
+      &:hover {
+        background: $secondaryColor1;
+      }
+    }
+
+    &.is-disabled {
+      opacity: 0.25;
+      pointer-events: none;
+    }
+  }
+
+  .text-w-border {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .border {
+      width: 50px;
+      height: 4px;
+    }
   }
 
   #app {
@@ -61,29 +189,22 @@ body {
       right: 10px;
     }
 
-    .apple-add-to-home-screen-modal {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      top: 0;
-      left: 0;
-      height: fit-content;
-      width: fit-content;
-      margin: auto;
-      z-index: 1000;
-    }
-
     .main-wrapper {
-      margin-top: 3.6rem;
-      padding: 20px;
+      padding-top: 73px;
+      min-height: 100vh;
+      height: 100%;
+      background: $primaryColor1;
+
+      @media (max-width: 1024px) {
+        padding-top: 64px;
+      }
+
+      @media (max-width: 767px) {
+        padding-top: 48px;
+      }
 
       .page-wrapper {
-        width: 60%;
         margin: auto;
-
-        @media screen and (max-width: 1000px) {
-          width: 100%;
-        }
       }
     }
   }

@@ -3,9 +3,27 @@
 $vue-color: #46bd87;
 $danger-color: #ea4d46;
 
+$generalDesktopPadding: 0 10%;
+$generalTabletPadding: 0 98px;
+$generalMobilePadding: 0 24px;
+
 /* Navbar */
 
 $navbar-height: 3.6rem;
 $navbar-color: #fff;
 $navbar-offline-color: #333;
 $navbar-link-color: #2c3e50;
+
+$primaryColor1: #014E56;
+$primaryColor2: #F67E7E;
+
+$white: #FFFFFF;
+
+$secondaryColor1: #79C8C7;
+$secondaryColor2: #2C6269;
+$secondaryColor3: #004047;
+$secondaryColor4: #012F34;
+$secondaryColor5: #002529;
+
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,600;0,700;1,500&display=swap');
+$textFont: 'Livvic', sans-serif;

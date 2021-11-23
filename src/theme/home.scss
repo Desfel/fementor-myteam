@@ -1,0 +1,323 @@
+.intro-section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 129px;
+  padding: $generalDesktopPadding 250px;
+  width: 100%;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    margin-top: 112px;
+    padding: $generalTabletPadding 256px ;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 80px;
+    padding: $generalMobilePadding 196px;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+  }
+
+  &:before {
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background: url('../assets/img/bg-pattern-home-1.svg') top left/contain no-repeat;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  &:after {
+    bottom: -100px;
+    right: 10%;
+    width: 358px;
+    height: 200px;
+    background: url('../assets/img/bg-pattern-home-2.svg') top right/contain no-repeat;
+
+    @media (max-width: 1024px) {
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+
+  h1 {
+    color: $white;
+    margin-right: 30px;
+
+    @media (max-width: 1024px) {
+      margin: 0 0 24px;
+    }
+
+    span {
+      color: $primaryColor2;
+    }
+  }
+
+  .text-w-border {
+    max-width: 445px;
+
+    @media (max-width: 1024px) {
+      max-width: 457px;
+    }
+
+    .border {
+      background: $secondaryColor1;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+
+    p {
+      margin-top: 79px;
+      color: $white;
+
+      @media (max-width: 1024px) {
+        font-size: 15px;
+        line-height: 28px;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.build-section {
+  position: relative;
+  width: 100%;
+  padding: 140px 10%;
+  background: $secondaryColor4;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 100px 98px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 64px 24px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -100px;
+
+    display: block;
+    width: 200px;
+    height: 244px;
+
+    background: url('../assets/img/bg-pattern-home-3.svg') top left/contain no-repeat;
+
+    @media (max-width: 1024px) {
+      bottom: auto;
+      top: 0;
+    }
+  }
+
+  .left-content {
+
+    @media (max-width: 1024px) {
+      margin-bottom: 64px;
+    }
+
+    .border {
+      background: $primaryColor2;
+    }
+
+    h2 {
+      max-width: 475px;
+      margin-top: 54px;
+      margin-right: 30px;
+      color: $white;
+
+      @media (max-width: 1024px) {
+        margin-top: 32px;
+      }
+
+      @media (max-width: 1024px) {
+        max-width: calc(100% - 100px);
+      }
+    }
+  }
+
+  .right-content {
+    margin-left: auto;
+    max-width: 50%;
+
+    @media (max-width: 1024px) {
+      max-width: 100%;
+    }
+
+    .argument-block {
+      display: flex;
+      align-items: flex-start;
+
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+
+      img {
+        margin-right: 23px;
+      }
+
+      .argument-title {
+        margin-bottom: 16px;
+        color: $primaryColor2;
+      }
+
+      .body-2 {
+        color: $white;
+        opacity: .8;
+      }
+    }
+  }
+}
+
+
+.testimony-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 140px 10%;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 100px 98px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 140px 24px;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+    width: 147px;
+    height: 100px;
+    background: url('../assets/img/bg-pattern-home-4-about-3.svg') top left/contain no-repeat;
+  }
+
+  &:after {
+    bottom: -100px;
+    right: 0;
+    width: 200px;
+    height: 200px;
+
+    background: url('../assets/img/bg-pattern-home-5.svg') top left/contain no-repeat;
+  }
+
+  h2 {
+    max-width: 932px;
+    margin-bottom: 56px;
+    text-align: center;
+    color: $white;
+
+    @media (max-width: 1024px) {
+      max-width: 450px;
+      margin-bottom: 48px;
+    }
+
+    span {
+      color: $secondaryColor1;
+    }
+  }
+
+  .testimonies {
+    display: flex;
+    align-items: stretch;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimony {
+      display: flex;
+      flex-direction: column;
+      width: calc((100% - 60px) /3);
+      padding-top: 36px;
+      text-align: center;
+      color: $white;
+      background: url('../assets/img/icon-quotes.svg') top center no-repeat;
+
+
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
+
+      &:not(:last-child) {
+        margin-right: 30px;
+
+        @media (max-width: 1024px) {
+          margin: 0 0 48px;
+        }
+      }
+
+      .quote {
+        margin-bottom: 24px;
+
+        @media (max-width: 1024px) {
+          margin-bottom: 16px;
+        }
+      }
+
+      .author {
+        color: $secondaryColor1;
+        margin-top: auto;
+        margin-bottom: 2px;
+      }
+
+      .author-job {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 18px;
+      }
+
+      img {
+        margin: 32px auto 0;
+        width: 62px;
+        border-radius: 50%;
+        border: 2px solid #C4FFFE;
+
+        @media (max-width: 1024px) {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+
