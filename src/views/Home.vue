@@ -1,7 +1,7 @@
 <template>
   <section class="page-wrapper">
     <section class="intro-section">
-      <h1 class="large-title">
+      <h1>
         Find the <br />best <span>talent</span>
       </h1>
 

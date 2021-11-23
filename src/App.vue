@@ -82,6 +82,11 @@ body {
       font-size: 40px;
       line-height: 40px;
     }
+
+    .small-title {
+      font-size: 64px;
+      line-height: 100px;
+    }
   }
 
   h2 {

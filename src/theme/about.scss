@@ -1,0 +1,317 @@
+.intro-section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 129px;
+  padding: $generalDesktopPadding 120px;
+  width: 100%;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    margin-top: 112px;
+    padding: $generalTabletPadding 112px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    margin-top: 80px;
+    padding: $generalMobilePadding 108px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    background: url('../assets/img/bg-pattern-about-1-mobile-nav-1.svg') top right/contain no-repeat;
+
+    @media (max-width: 767px) {
+      bottom: -100px;
+    }
+  }
+
+  h1 {
+    color: $white;
+    margin-right: 60px;
+
+    @media (max-width: 1024px) {
+      margin: 0 0 24px;
+    }
+  }
+
+  .text-w-border {
+    max-width: 730px;
+
+    @media (max-width: 1024px) {
+      max-width: 457px;
+    }
+
+    .border {
+      background: $primaryColor2;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+
+    p {
+      margin-top: 40px;
+      color: $white;
+
+      @media (max-width: 1024px) {
+        font-size: 15px;
+        line-height: 28px;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.team-section {
+  position: relative;
+  padding: 140px 10%;
+  width: 100%;
+  background: $secondaryColor3;
+  overflow: hidden;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+  }
+
+  &:before {
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background: url('../assets/img/bg-pattern-about-2-contact-1.svg') top left/contain no-repeat;
+
+    @media (max-width: 767px) {
+      top: -100px;
+    }
+  }
+
+  &:after {
+    bottom: 0;
+    right: 0;
+    width: 147px;
+    height: 100px;
+    background: url('../assets/img/bg-pattern-home-4-about-3.svg') top left/contain no-repeat;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 64px;
+    color: $white;
+  }
+
+  .team-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    .team-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: calc((100% - 60px) / 3);
+      min-height: 253px;
+      padding: 32px 24px 56px;
+      background: $secondaryColor4;
+      margin-bottom: 54px;
+      transition: background-color .3s ease-in-out;
+
+      @media (min-width: 1025px) {
+        &:not(:nth-child(3)):not(:nth-child(6)){
+          margin-right: 30px;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+        width: calc((100% - 11px) / 2);
+
+        &:not(:nth-child(even)){
+          margin-right: 11px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      &.is-opened {
+        padding: 34px 48px 60px;
+        background: $secondaryColor5;
+
+        .front-card {
+          display: none;
+        }
+
+        .back-card {
+          display: block;
+        }
+      }
+
+      .back-card {
+        display: none;
+      }
+
+      .avatar {
+        width: 96px;
+        border-radius: 50%;
+        border: 2px solid #C4FFFE;
+        margin-bottom: 16px;
+      }
+
+      .team-name {
+        color: $secondaryColor1;
+      }
+
+      .team-role {
+        font-style: italic;
+        color: $white;
+      }
+
+      .team-text {
+        margin: 8px 0 24px;
+        color: $white;
+      }
+
+      .team-socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        a {
+          &:first-child {
+            margin-right: 16px;
+          }
+
+          svg path {
+            transition: fill .3s ease-in-out;
+          }
+
+          &:hover {
+            svg path {
+              fill: $primaryColor2;
+            }
+          }
+        }
+      }
+
+      .card-trigger {
+        position: absolute;
+        bottom: -28px;
+        display: block;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: url('../assets/img/icon-cross.svg') center no-repeat, $primaryColor2;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background: url('../assets/img/icon-cross.svg') center no-repeat, $secondaryColor1;
+        }
+
+        &.is-opened {
+          background: url('../assets/img/icon-close-dark.svg') center no-repeat, $secondaryColor1;
+
+          &:hover {
+            background: url('../assets/img/icon-close-dark.svg') center no-repeat, $primaryColor2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.clients-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 10% 150px;
+  background: $secondaryColor4;
+  width: 100%;
+  overflow:hidden;
+
+  @media (max-width: 1024px) {
+    padding: 100px 40px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 88px 24px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: url('../assets/img/bg-pattern-about-4.svg') top left/contain no-repeat;
+
+    @media (max-width: 1024px) {
+      top: -100px;
+    }
+    @media (max-width: 1024px) {
+      left: -100px;
+    }
+  }
+
+  h2 {
+    color: $white;
+    text-align: center;
+  }
+
+  .clients {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+    width: 100%;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .client {
+      width: calc((100% - 200px) / 5);
+      height: 45px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @media (max-width: 767px) {
+        width: 100%;
+        height: 40px;
+      }
+
+      &:not(:last-child) {
+        margin-right: 50px;
+
+        @media (max-width: 767px) {
+          margin: 0 0 48px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
