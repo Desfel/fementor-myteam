@@ -40,7 +40,10 @@ const router = new Router({
       meta: {}
     },
     { path: '*', redirect: '/home' }
-  ]
+  ],
+  scrollBehavior () {
+    return { behavior: 'smooth', x: 0, y: 0 }
+  }
 })
 
 /**
