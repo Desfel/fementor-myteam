@@ -163,6 +163,7 @@ body {
       color: $secondaryColor5;
 
       &:hover {
+        border-color: $secondaryColor1;
         background: $secondaryColor1;
       }
     }
