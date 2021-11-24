@@ -129,7 +129,7 @@ export default {
   }
 
   .mobile-menu-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 

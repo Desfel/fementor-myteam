@@ -71,6 +71,11 @@ footer {
       margin-top: auto;
     }
 
+    @media (max-width: 767px) {
+      margin-top: 24px;
+      justify-content: space-between;
+    }
+
     a {
       font-weight: 600;
       font-size: 18px;
